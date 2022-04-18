@@ -1,0 +1,26 @@
+Sub アンケート集計
+Dim　wsh As New IWshRuntime Library WshShell
+Dim result As Wsh Exec
+Dim fileData()As sting
+
+Dim path As String
+Dim cmd As string
+path = ThisWorkbook path&"¥アンケート"
+cmd = "dir"&Path&"/b"
+
+Set result = wsh.Exec("%ComSpec%/c"&cmd)
+
+Do while result.Status=0
+   Do Events
+Loop
+   fileData=Split(result.StdOut.ReadAll,vbCrLf)
+Dim i as Long
+i=8
+ForEach StrData In fileData
+Cells(i,2).Value=StrData
+if cells(i,2).Value<>""Then
+Cells(i,3).Value="='"&path&"¥[”&strdata&"]Sheet1."/C4"
+i=i+1
+Next
+
+End Sub
