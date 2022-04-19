@@ -1,0 +1,17 @@
+Sub Str_merge()
+   Dim str As Strng
+   Dim cell As Range
+   Dim check As Boolean
+   check = True
+   for each cell in Selection
+      If check Then 
+         Str = cell.Value
+      Else
+         str = str&vbLf&cell.Value
+      End If
+      check = False
+      cell.Value = ""
+   Next cell
+   Selection.Merge
+   Selection.Value = str
+End Sub
